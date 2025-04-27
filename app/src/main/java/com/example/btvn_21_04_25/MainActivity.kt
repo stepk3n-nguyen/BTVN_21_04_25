@@ -11,11 +11,12 @@ import android.widget.Spinner
 import androidx.appcompat.app.AppCompatActivity
 
 class MainActivity : AppCompatActivity() {
+    private lateinit var etFrom : EditText
+    private lateinit var etTo : EditText
+    private lateinit var spinnerFrom : Spinner
+    private lateinit var spinnerTo : Spinner
 
-    private lateinit var etFrom: EditText
-    private lateinit var etTo: EditText
-    private lateinit var spinnerFrom: Spinner
-    private lateinit var spinnerTo: Spinner
+    private var isFromFocused = true
 
     private val currencyRates = mapOf(
         "United States - Dollar" to 1.0,
@@ -29,8 +30,6 @@ class MainActivity : AppCompatActivity() {
         "China - CNY" to 7.24,
         "Korea - KRW" to 1376.5
     )
-
-    private var isFromFocused = true
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -80,8 +79,6 @@ class MainActivity : AppCompatActivity() {
             etTo.isFocusable = hasFocus
             etTo.isFocusableInTouchMode = hasFocus
         }
-
-        // Set mặc định EditText trên focus
         etFrom.requestFocus()
     }
 
@@ -89,7 +86,6 @@ class MainActivity : AppCompatActivity() {
         override fun afterTextChanged(s: Editable?) {
             updateConversion()
         }
-
         override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
         override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
     }
@@ -97,6 +93,7 @@ class MainActivity : AppCompatActivity() {
     private fun updateConversion() {
         if (isFromFocused) {
             val amountText = etFrom.text.toString()
+            //------bug treo app
 //            if (amountText.isEmpty()) {
 //                etTo.setText("")
 //                return
@@ -108,6 +105,7 @@ class MainActivity : AppCompatActivity() {
             etTo.setText("%.2f".format(result))
         } else {
             val amountText = etTo.text.toString()
+            //------bug treo app
 //            if (amountText.isEmpty()) {
 //                etFrom.setText("")
 //                return

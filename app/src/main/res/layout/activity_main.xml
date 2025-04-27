@@ -39,7 +39,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="32dp" />
 
-    <!-- Spinner chọn loại tiền thứ hai -->
     <Spinner
         android:id="@+id/spinnerTo"
         android:layout_width="0dp"
